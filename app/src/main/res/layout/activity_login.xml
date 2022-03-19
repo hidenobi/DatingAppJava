@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrationActivity"
+    android:background="@drawable/background1"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical">
+    <LinearLayout
+        android:padding="30dp"
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:background="@drawable/backgroundlogin"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="@color/primary_text"
+            android:text="ĐĂNG NHẬP"/>
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/backedittext"
+            android:padding="10dp"
+            android:layout_marginTop="40dp"
+            android:hint="email" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:padding="10dp"
+            android:background="@drawable/backedittext"
+            android:layout_marginTop="40dp"
+            android:hint="password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/Login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/pinkbutton"
+            android:layout_marginTop="40dp"
+            android:text="Đăng nhập" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:text="Chưa có tài khoản"
+                android:textColor="@color/secondary_text"
+                android:textSize="18dp"
+                android:textStyle="bold" />/>
+
+            <Button
+                android:id="@+id/newRegister"
+                android:layout_weight="0.5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/pinkbutton"
+                android:text="Đăng Ký Ngay" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

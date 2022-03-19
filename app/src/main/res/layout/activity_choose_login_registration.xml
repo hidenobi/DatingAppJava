@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChooseLoginRegistrationActivity"
+    android:orientation="vertical"
+    android:background="@drawable/background1"
+    android:padding="24dp"
+    android:layout_gravity="center"
+    android:gravity="center">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="WELCOME!"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Đăng nhập hoặc Đăng ký để tiếp tục"
+        android:textColor="@color/secondary_text"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="371dp"
+        android:src="@drawable/cap_doi"
+        android:layout_marginTop="5dp"/>
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/backgroundbutton"
+        android:textColor="@color/secondary_text"
+        android:text="Đăng Nhập"
+        android:textSize="12dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="hoặc"
+        android:textSize="15dp"
+        android:textColor="@color/secondary_text"/>
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/backgroundbutton"
+        android:text="Đăng Ký"
+        android:textColor="@color/secondary_text"
+        android:textSize="12dp" />
+
+
+</LinearLayout>
