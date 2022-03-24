@@ -5,23 +5,34 @@
       <map>
         <entry key="..\:/DatingApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1635" />
         <entry key="..\:/DatingApp/app/src/main/res/drawable/backedittext.xml" value="0.1635" />
+        <entry key="..\:/DatingApp/app/src/main/res/drawable/background_info.xml" value="0.1485" />
         <entry key="..\:/DatingApp/app/src/main/res/drawable/backgroundbutton.xml" value="0.138" />
+        <entry key="..\:/DatingApp/app/src/main/res/drawable/backgroundimage.xml" value="0.132" />
         <entry key="..\:/DatingApp/app/src/main/res/drawable/backgroundlogin.xml" value="0.1635" />
         <entry key="..\:/DatingApp/app/src/main/res/drawable/backgroundregister.xml" value="0.165" />
+        <entry key="..\:/DatingApp/app/src/main/res/drawable/gray_button.xml" value="0.1395" />
+        <entry key="..\:/DatingApp/app/src/main/res/drawable/ic_launcher1_background.xml" value="0.144" />
         <entry key="..\:/DatingApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1635" />
+        <entry key="..\:/DatingApp/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/DatingApp/app/src/main/res/drawable/imagebutton.xml" value="0.132" />
+        <entry key="..\:/DatingApp/app/src/main/res/drawable/input_info.xml" value="0.1425" />
         <entry key="..\:/DatingApp/app/src/main/res/drawable/pinkbutton.xml" value="0.1635" />
         <entry key="..\:/DatingApp/app/src/main/res/drawable/shadow.xml" value="0.165" />
+        <entry key="..\:/DatingApp/app/src/main/res/drawable/toolbar.xml" value="0.188" />
         <entry key="..\:/DatingApp/app/src/main/res/layout/activity_chat.xml" value="0.22" />
         <entry key="..\:/DatingApp/app/src/main/res/layout/activity_choose_login_registration.xml" value="0.22" />
         <entry key="..\:/DatingApp/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/DatingApp/app/src/main/res/layout/activity_login2.xml" value="0.10371376811594203" />
-        <entry key="..\:/DatingApp/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
-        <entry key="..\:/DatingApp/app/src/main/res/layout/activity_matches.xml" value="0.14666666666666667" />
+        <entry key="..\:/DatingApp/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/DatingApp/app/src/main/res/layout/activity_matches.xml" value="0.2936630602782071" />
         <entry key="..\:/DatingApp/app/src/main/res/layout/activity_registration.xml" value="0.4466666666666667" />
-        <entry key="..\:/DatingApp/app/src/main/res/layout/activity_settings.xml" value="0.4466666666666667" />
-        <entry key="..\:/DatingApp/app/src/main/res/layout/item.xml" value="0.1" />
+        <entry key="..\:/DatingApp/app/src/main/res/layout/activity_settings.xml" value="0.4142194744976816" />
+        <entry key="..\:/DatingApp/app/src/main/res/layout/activity_view_profile.xml" value="0.22" />
+        <entry key="..\:/DatingApp/app/src/main/res/layout/item.xml" value="0.16666666666666666" />
         <entry key="..\:/DatingApp/app/src/main/res/layout/item_chat.xml" value="0.1" />
-        <entry key="..\:/DatingApp/app/src/main/res/layout/item_matches.xml" value="0.1" />
+        <entry key="..\:/DatingApp/app/src/main/res/layout/item_matches.xml" value="0.4466666666666667" />
+        <entry key="..\:/DatingApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.144" />
+        <entry key="..\:/DatingApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.144" />
       </map>
     </option>
   </component>

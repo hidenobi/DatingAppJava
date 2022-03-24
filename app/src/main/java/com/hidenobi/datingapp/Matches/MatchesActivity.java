@@ -5,25 +5,33 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.hidenobi.datingapp.MainActivity;
 import com.hidenobi.datingapp.R;
+import com.hidenobi.datingapp.SettingsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class MatchesActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mMatchesAdapter;
     private RecyclerView.LayoutManager mlayoutManager;
-
+    private ImageView mCurrentUserImage;
+    private DatabaseReference mUserDatabase;
     private String currentUserId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +39,8 @@ public class MatchesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_matches);
 
         currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
+        mUserDatabase = FirebaseDatabase.getInstance("https://datingapp-babdb-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Users").child(currentUserId);
+        mCurrentUserImage = (ImageView) findViewById(R.id.currentUserImage);
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mRecyclerView.setNestedScrollingEnabled(false);
         mRecyclerView.setHasFixedSize(true);
@@ -39,12 +48,37 @@ public class MatchesActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mlayoutManager);
         mMatchesAdapter = new MatchesAdapter(getDataSetMatches(),MatchesActivity.this);
         mRecyclerView.setAdapter(mMatchesAdapter);
-
+        getUserInfo();
         getUserMatchId();
+    }
 
+    private void getUserInfo() {
+        mUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    Map<String,Object> map = (Map<String, Object>)  snapshot.getValue();
+                    if(map.get("profileImageUrl")!=null){
+                        String profileImageUrl = map.get("profileImageUrl").toString();
+                        switch (profileImageUrl){
+                            case "default":
+                                Glide.with(getApplication()).load(R.mipmap.ic_launcher).into(mCurrentUserImage);
+                                break;
 
-//        mMatchesAdapter.notifyDataSetChanged();
+                            default:
+                                Glide.with(getApplication()).load(profileImageUrl).into(mCurrentUserImage);
+                                break;
+                        }
 
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void getUserMatchId() {
@@ -99,5 +133,11 @@ public class MatchesActivity extends AppCompatActivity {
     private ArrayList<MatchesObject> resultsMatches = new ArrayList<MatchesObject>();
     private List<MatchesObject> getDataSetMatches() {
         return resultsMatches;
+    }
+
+    public void goToSettings(View view) {
+        Intent intent = new Intent(MatchesActivity.this, SettingsActivity.class);
+        startActivity(intent);
+        return;
     }
 }

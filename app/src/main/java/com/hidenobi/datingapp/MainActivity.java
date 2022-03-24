@@ -6,11 +6,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -26,18 +32,17 @@ import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-   private cards cards_data[];
+    private cards cards_data[];
     private com.hidenobi.datingapp.Cards.arrayAdapter arrayAdapter;
     private int i;
-
     private FirebaseAuth mAuth;
-
+    private ImageView imageView;
     private  String currentUId;
-    private DatabaseReference usersDb;
-
+    private DatabaseReference usersDb,mUserDatabase;
     ListView listView;
     List<cards> rowItems;
 
@@ -50,10 +55,10 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         currentUId=mAuth.getCurrentUser().getUid();
+        imageView=(ImageView) findViewById(R.id.userImage);
+        getUserInfo();
         checkUserSex();
-
         rowItems = new ArrayList<cards>();
-
 
         arrayAdapter = new arrayAdapter(this, R.layout.item, rowItems );
 
@@ -108,23 +113,26 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void isConnectionMatch(String userId) {
-        DatabaseReference currentUserConnectionsDb = usersDb.child(currentUId).child("connections").child("yeps").child(userId);
-        currentUserConnectionsDb.addListenerForSingleValueEvent(new ValueEventListener() {
+    private void getUserInfo() {
+        mUserDatabase=usersDb.child(currentUId);
+        mUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    Toast.makeText(MainActivity.this,"new Connection",Toast.LENGTH_SHORT).show();
+                    Map<String,Object> map = (Map<String, Object>)  snapshot.getValue();
+                    if(map.get("profileImageUrl")!=null){
+                        String profileImageUrl = map.get("profileImageUrl").toString();
+                        switch (profileImageUrl){
+                            case "default":
+                                Glide.with(getApplication()).load(R.mipmap.ic_launcher).into(imageView);
+                                break;
 
-                    String key = FirebaseDatabase.getInstance("https://datingapp-babdb-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Chat").push().getKey();
+                            default:
+                                Glide.with(getApplication()).load(profileImageUrl).into(imageView);
+                                break;
+                        }
 
-//                    usersDb.child(snapshot.getKey()).child("connections").child("matches").child(currentUId).setValue(true);
-                    usersDb.child(snapshot.getKey()).child("connections").child("matches").child(currentUId).child("ChatId").setValue(key);
-
-
-//                    usersDb.child(currentUId).child("connections").child("matches").child(snapshot.getKey()).setValue(true);
-                    usersDb.child(currentUId).child("connections").child("matches").child(snapshot.getKey()).child("ChatId").setValue(key);
-
+                    }
                 }
             }
 
@@ -135,6 +143,23 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void isConnectionMatch(String userId) {
+        DatabaseReference currentUserConnectionsDb = usersDb.child(currentUId).child("connections").child("yeps").child(userId);
+        currentUserConnectionsDb.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    Toast.makeText(MainActivity.this,"new Connection",Toast.LENGTH_SHORT).show();
+                    String key = FirebaseDatabase.getInstance("https://datingapp-babdb-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Chat").push().getKey();
+                    usersDb.child(snapshot.getKey()).child("connections").child("matches").child(currentUId).child("ChatId").setValue(key);
+                    usersDb.child(currentUId).child("connections").child("matches").child(snapshot.getKey()).child("ChatId").setValue(key);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
     private  String userSex;
     private String oppositeUserSex;
     public void checkUserSex(){
@@ -158,13 +183,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-
     }
     public void getOppositeSexUser(){
         usersDb.addChildEventListener(new ChildEventListener() {
@@ -177,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
                             profileImageUrl=snapshot.child("profileImageUrl").getValue().toString();
                         }
                         else{
-                            profileImageUrl="https://firebasestorage.googleapis.com/v0/b/datingapp-babdb.appspot.com/o/profileImages%2Fu82gUkRen6NQqHkDcTRGRUi1meh2?alt=media&token=9a4ed77d-d3c1-44ec-9264-ec5a83684e12";
+                            profileImageUrl="https://firebasestorage.googleapis.com/v0/b/datingapp-babdb.appspot.com/o/profileImages%2Fk3cd7O8XCCZm6aOzHsG9mVKgejD2?alt=media&token=c73d65dd-e301-463e-bef3-2dd69cf4f2c5";
                         }
                         cards item = new cards(snapshot.getKey(),snapshot.child("name").getValue().toString(),profileImageUrl);
                         rowItems.add(item);
@@ -201,7 +224,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void logoutUser(View view) {
-
         mAuth.signOut();
         Intent intent = new Intent(MainActivity.this,LoginActivity.class);
         startActivity(intent);

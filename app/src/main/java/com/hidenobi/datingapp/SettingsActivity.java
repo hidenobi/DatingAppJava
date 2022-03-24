@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -36,14 +37,13 @@ import java.util.Map;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private EditText mNameField,mPhoneField;
-    private Button mBack,mConfirm;
+    private EditText mNameField,mPhoneField,mAgeField,mStatus,mRelationship,mHome,mJobs,mHobby;
+    private ImageView mBack,mConfirm;
     private ImageView mProfileImage;
-
     private FirebaseAuth mAuth;
     private DatabaseReference mUserDatabase;
 
-    private  String userId, name, phone, profileImageUrl,userSex;
+    private  String userId, name, phone, profileImageUrl,userSex,age,status,relationship,home,job,hobby;
     private Uri resultUri;
 
     @Override
@@ -51,16 +51,20 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-
+        mAgeField = (EditText) findViewById(R.id.age);
+        mStatus =(EditText) findViewById(R.id.status);
         mNameField = (EditText) findViewById(R.id.name);
         mPhoneField =(EditText) findViewById(R.id.phone);
+        mHobby=(EditText) findViewById(R.id.hobby);
+        mRelationship=(EditText) findViewById(R.id.relationship);
+        mHome = (EditText) findViewById(R.id.home);
+        mJobs = (EditText) findViewById(R.id.jobs);
         mProfileImage =(ImageView) findViewById(R.id.profileImage);
-        mBack = (Button) findViewById(R.id.back);
-        mConfirm = (Button) findViewById(R.id.confirm);
+        mBack = (ImageView) findViewById(R.id.back);
+        mConfirm = (ImageView) findViewById(R.id.confirm);
         mAuth = FirebaseAuth.getInstance();
         userId = mAuth.getCurrentUser().getUid();
         mUserDatabase = FirebaseDatabase.getInstance("https://datingapp-babdb-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Users").child(userId);
-
         getUserInfo();
         mProfileImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,9 +103,33 @@ public class SettingsActivity extends AppCompatActivity {
                         name = map.get("name").toString();
                         mNameField.setText(name);
                     }
+                    if(map.get("age")!=null){
+                        age=map.get("age").toString();
+                        mAgeField.setText(age);
+                    }
+                    if(map.get("status")!=null){
+                        status=map.get("status").toString();
+                        mStatus.setText(status);
+                    }
                     if(map.get("phone")!=null){
                         phone = map.get("phone").toString();
                         mPhoneField.setText(phone);
+                    }
+                    if(map.get("home")!=null){
+                        home = map.get("home").toString();
+                        mHome.setText(home);
+                    }
+                    if(map.get("jobs")!=null){
+                        job = map.get("jobs").toString();
+                        mJobs.setText(job);
+                    }
+                    if(map.get("relationship")!=null){
+                        relationship = map.get("relationship").toString();
+                        mRelationship.setText(relationship);
+                    }
+                    if(map.get("hobby")!=null){
+                        hobby = map.get("hobby").toString();
+                        mHobby.setText(hobby);
                     }
                     if(map.get("sex")!=null){
                        userSex= map.get("sex").toString();
@@ -132,10 +160,21 @@ public class SettingsActivity extends AppCompatActivity {
     private void saveUserInformation() {
         name = mNameField.getText().toString();
         phone = mPhoneField.getText().toString();
-
+        age = mAgeField.getText().toString();
+        status=mStatus.getText().toString();
+        home=mHome.getText().toString();
+        job=mJobs.getText().toString();
+        relationship=mRelationship.getText().toString();
+        hobby=mHobby.getText().toString();
         Map userInfo = new HashMap();
         userInfo.put("name",name);
         userInfo.put("phone",phone);
+        userInfo.put("age",age);
+        userInfo.put("status",status);
+        userInfo.put("jobs",job);
+        userInfo.put("home",home);
+        userInfo.put("relationship",relationship);
+        userInfo.put("hobby",hobby);
         mUserDatabase.updateChildren(userInfo);
         if(resultUri!=null){
             StorageReference filepath = FirebaseStorage.getInstance().getReference().child("profileImages").child(userId);
@@ -165,7 +204,7 @@ public class SettingsActivity extends AppCompatActivity {
                             Map newImage = new HashMap();
                             newImage.put("profileImageUrl",uri.toString());
                             mUserDatabase.updateChildren(newImage);
-                            finish();;
+                            finish();
                             return;
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -191,5 +230,14 @@ public class SettingsActivity extends AppCompatActivity {
             resultUri = imageUri;
             mProfileImage.setImageURI(resultUri);
         }
+    }
+
+    public void logOut(View view) {
+        mAuth.signOut();
+        Intent intent = new Intent(SettingsActivity.this,LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+        return;
     }
 }
