@@ -1,10 +1,12 @@
 package com.hidenobi.datingapp.Chat;
 
+import static com.hidenobi.datingapp.R.drawable.back_shadow_item_profile;
 import static com.hidenobi.datingapp.R.layout.item_chat;
 import static com.hidenobi.datingapp.R.layout.item_matches;
-
+import  static com.hidenobi.datingapp.R.drawable.back_pink_shadow_button;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.hidenobi.datingapp.R;
 
 import java.util.List;
 
@@ -41,15 +44,16 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolders> {
 
         holder.mMessage.setText(chatObjectList.get(position).getMessage());
         if(chatObjectList.get(position).getCurrentUser()){
-            holder.mMessage.setGravity(Gravity.END);
-            holder.mMessage.setTextColor(Color.parseColor("#404040"));
-            holder.linearLayout.setBackgroundColor(Color.parseColor("#F4F4F4"));
-
+            holder.mLinearLayout.setGravity(Gravity.END);
+            holder.mLinearLayout.setPadding(150,0,0,0);
+            holder.mMessage.setTextColor(Color.parseColor("#FFFFFF"));
+            holder.linearLayout.setBackgroundResource(back_pink_shadow_button);
         }
         else{
-            holder.mMessage.setGravity(Gravity.START);
-            holder.mMessage.setTextColor(Color.parseColor("#FFFFFF"));
-            holder.linearLayout.setBackgroundColor(Color.parseColor("#2DB4C8"));
+            holder.mLinearLayout.setGravity(Gravity.START);
+            holder.mLinearLayout.setPadding(0,0,150,0);
+            holder.mMessage.setTextColor(Color.parseColor("#FF000000"));
+            holder.linearLayout.setBackgroundResource(back_shadow_item_profile);
         }
     }
 

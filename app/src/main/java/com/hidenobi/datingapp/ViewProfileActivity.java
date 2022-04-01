@@ -3,7 +3,10 @@ package com.hidenobi.datingapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,6 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.hidenobi.datingapp.Chat.ChatActivity;
 
 import java.util.Map;
 
@@ -23,13 +27,14 @@ public class ViewProfileActivity extends AppCompatActivity {
     private TextView mNameField,mPhoneField,mAgeField,mStatus,mRelationship,mHome,mJobs,mHobby;
     private ImageView mProfileImage;
     private DatabaseReference mUserDatabase;
-
+    private Button mChat;
     private  String name, phone, profileImageUrl,userSex,age,status,relationship,home,job,hobby;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_profile);
         matchID = getIntent().getExtras().getString("matchId");
+        mChat = (Button) findViewById(R.id.chat);
         mAgeField = (TextView) findViewById(R.id.age);
         mStatus =(TextView) findViewById(R.id.status);
         mNameField = (TextView) findViewById(R.id.name);
@@ -41,6 +46,17 @@ public class ViewProfileActivity extends AppCompatActivity {
         mProfileImage =(ImageView) findViewById(R.id.profileImage);
         mUserDatabase = FirebaseDatabase.getInstance("https://datingapp-babdb-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Users").child(matchID);
         getUserInfo();
+        mChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), ChatActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("matchId",matchID);
+                intent.putExtras(bundle);
+                view.getContext().startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void getUserInfo() {

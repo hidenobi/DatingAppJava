@@ -52,6 +52,10 @@ public class LoginActivity extends AppCompatActivity {
 
                 final String email = mEmail.getText().toString();
                 final String password = mPassword.getText().toString();
+                if(email.isEmpty()||password.isEmpty()){
+                    Toast.makeText(LoginActivity.this,"Vui lòng điền đầy đủ thông tin",Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

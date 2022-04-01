@@ -64,13 +64,17 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 int selectId =mRadioGroup.getCheckedRadioButtonId();
                 final RadioButton mRadioButton = (RadioButton) findViewById(selectId);
-                if(mRadioButton.getText()==null){
+                if(selectId<0){
+                    Toast.makeText(RegistrationActivity.this,"Vui lòng lựa chọn giới tính",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 final String name= m_Name.getText().toString();
                 final String email = mEmail.getText().toString();
                 final String password = mPassword.getText().toString();
-
+                if(name.isEmpty()||email.isEmpty()||password.isEmpty()){
+                    Toast.makeText(RegistrationActivity.this,"Vui lòng điền đầy đủ thông tin",Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 
                 mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {

@@ -14,12 +14,13 @@ import com.hidenobi.datingapp.R;
 
 public class ChatViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener {
     public TextView mMessage;
-    public LinearLayout linearLayout;
+    public LinearLayout linearLayout,mLinearLayout;
     public ChatViewHolders(@NonNull View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
         mMessage = itemView.findViewById(R.id.messages);
         linearLayout = itemView.findViewById(R.id.container);
+        mLinearLayout = itemView.findViewById(R.id.linearLayout);
     }
 
     @Override

@@ -33,6 +33,7 @@
             android:background="@drawable/backedittext"
             android:padding="10dp"
             android:layout_marginTop="40dp"
+            android:textColorHint="@color/secondary_text"
             android:hint="email" />
 
         <EditText
@@ -42,6 +43,7 @@
             android:padding="10dp"
             android:background="@drawable/backedittext"
             android:layout_marginTop="40dp"
+            android:textColorHint="@color/secondary_text"
             android:hint="password"
             android:inputType="textPassword" />
 

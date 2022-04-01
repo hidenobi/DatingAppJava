@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 String userId = obj.getUserId();
                 usersDb.child(userId).child("connections").child("nope").child(currentUId).setValue(true);
 
-                Toast.makeText(MainActivity.this,"left",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"Không Thích",Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 String userId = obj.getUserId();
                 usersDb.child(userId).child("connections").child("yeps").child(currentUId).setValue(true);
                 isConnectionMatch(userId);
-                Toast.makeText(MainActivity.this,"right",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"Thích",Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    Toast.makeText(MainActivity.this,"new Connection",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,"Bạn và người ấy đã kết nối",Toast.LENGTH_SHORT).show();
                     String key = FirebaseDatabase.getInstance("https://datingapp-babdb-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Chat").push().getKey();
                     usersDb.child(snapshot.getKey()).child("connections").child("matches").child(currentUId).child("ChatId").setValue(key);
                     usersDb.child(currentUId).child("connections").child("matches").child(snapshot.getKey()).child("ChatId").setValue(key);
