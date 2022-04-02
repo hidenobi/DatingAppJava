@@ -243,4 +243,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         return;
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        getUserInfo();
+    }
 }
