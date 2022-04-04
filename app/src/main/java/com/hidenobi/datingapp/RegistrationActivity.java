@@ -71,6 +71,11 @@ public class RegistrationActivity extends AppCompatActivity {
                 final String name= m_Name.getText().toString();
                 final String email = mEmail.getText().toString();
                 final String password = mPassword.getText().toString();
+                final String sex = mRadioButton.getText().toString();
+                final String mSex;
+                if(sex=="Nam") mSex = "Male";
+                else mSex = "Female";
+
                 if(name.isEmpty()||email.isEmpty()||password.isEmpty()){
                     Toast.makeText(RegistrationActivity.this,"Vui lòng điền đầy đủ thông tin",Toast.LENGTH_SHORT).show();
                     return;
@@ -90,7 +95,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
                             Map userInfo = new HashMap<>();
                             userInfo.put("name",name);
-                            userInfo.put("sex",mRadioButton.getText().toString());
+                            userInfo.put("sex",mSex);
                             userInfo.put("profileImageUrl","default");
 
 

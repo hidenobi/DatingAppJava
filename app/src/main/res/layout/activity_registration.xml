@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="18dp"
-                android:text="Male" />
+                android:text="Nam" />
 
             <RadioButton
                 android:layout_weight="0.3"
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:textColor="@color/black"
-                android:text="Female" />
+                android:text="Nữ" />
         </RadioGroup>
         <EditText
             android:layout_width="match_parent"
