@@ -72,8 +72,9 @@ public class RegistrationActivity extends AppCompatActivity {
                 final String email = mEmail.getText().toString();
                 final String password = mPassword.getText().toString();
                 final String sex = mRadioButton.getText().toString();
+                System.out.println(sex);
                 final String mSex;
-                if(sex=="Nam") mSex = "Male";
+                if(sex.equals("Nam")) mSex = "Male";
                 else mSex = "Female";
 
                 if(name.isEmpty()||email.isEmpty()||password.isEmpty()){
