@@ -69,6 +69,7 @@ public class ChatActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mChatAdapter);
         mSendEditText = findViewById(R.id.message);
         mSendButton = findViewById(R.id.send);
+        mRecyclerView.scrollToPosition(mChatAdapter.getItemCount());
         mSendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

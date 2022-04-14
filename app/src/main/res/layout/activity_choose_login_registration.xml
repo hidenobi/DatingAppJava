@@ -60,6 +60,12 @@
         android:text="Đăng Ký"
         android:textColor="@color/secondary_text"
         android:textSize="12dp" />
-
+    <ImageView
+        android:layout_marginTop="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_iconmonstr_github_1"
+        android:id="@+id/ic_github"
+        app:tint="@color/white" />
 
 </LinearLayout>

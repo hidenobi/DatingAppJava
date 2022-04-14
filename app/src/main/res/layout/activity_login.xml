@@ -34,6 +34,7 @@
             android:padding="10dp"
             android:layout_marginTop="40dp"
             android:textColorHint="@color/secondary_text"
+            android:textColor="@color/black"
             android:hint="email" />
 
         <EditText
@@ -45,6 +46,7 @@
             android:layout_marginTop="40dp"
             android:textColorHint="@color/secondary_text"
             android:hint="password"
+            android:textColor="@color/black"
             android:inputType="textPassword" />
 
         <Button
