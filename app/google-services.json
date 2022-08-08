@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "143704006522",
+    "project_id": "datingapp-babdb",
+    "storage_bucket": "datingapp-babdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143704006522:android:6c4b66e714a7b9828640c3",
+        "android_client_info": {
+          "package_name": "com.hidenobi.datingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "143704006522-90onboh55dbq0qj88ci9sjjjf9sp5gbv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hidenobi.datingapp",
+            "certificate_hash": "022aef30d7456ad6bfc8f9e55dcaf36873b125ec"
+          }
+        },
+        {
+          "client_id": "143704006522-7bdj8tbcfss669lidh73p07hi5cm5akj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7PK_HdehWGiTbLoiF1GBLkER6PjEpXJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "143704006522-7bdj8tbcfss669lidh73p07hi5cm5akj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

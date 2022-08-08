@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/toolbar"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_weight="0.08"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:id="@+id/back"
+            android:src="@drawable/iconback"/>
+        <TextView
+            android:layout_weight="0.84"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="Hồ Sơ"
+            android:textColor="@color/red"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+        <ImageView
+            android:layout_weight="0.08"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:id="@+id/confirm"
+            android:src="@drawable/iconconfirm"/>
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@android:color/transparent"
+        android:elevation="2dp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="180dp">
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="100sp"
+            android:layout_height="100sp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_default" />
+    </androidx.cardview.widget.CardView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+        <EditText
+            android:gravity="center|right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/name"
+            android:background="@null"
+            android:textColor="@color/darkgray"
+            android:hint="Name"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/darkgray"
+            android:text=",  "
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+        <EditText
+            android:gravity="center|left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/age"
+            android:background="@null"
+            android:textColor="@color/darkgray"
+            android:hint="Age"
+            android:textSize="18dp"
+            android:inputType="number"
+            android:textStyle="bold"
+            />
+
+        <ImageView
+            android:layout_marginLeft="3dp"
+            android:layout_width="18dp"
+            android:layout_height="16dp"
+            android:src="@drawable/iconpencil"/>
+    </LinearLayout>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/status"
+        android:background="@null"
+        android:textSize="16dp"
+        android:layout_gravity="center"
+        android:gravity="center|bottom"
+        android:hint="Trạng Thái"
+        android:textColor="@color/secondary_text"
+        android:layout_marginBottom="10sp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        />
+
+    <View
+        android:layout_width="150dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="center"
+        android:background="@drawable/shadow"
+        android:layout_marginBottom="10dp"
+        android:layout_height="1dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingLeft="20dp"
+        android:orientation="horizontal"
+        android:background="@drawable/back_shadow_item_profile">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/ic_tym" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relationship"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:background="@null"
+            android:hint="Tình trạng quan hệ"
+            android:textColor="@color/darkgray"
+            android:layout_marginLeft="10dp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingLeft="20dp"
+        android:orientation="horizontal"
+        android:background="@drawable/back_shadow_item_profile">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/ic_phone" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/phone"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:background="@null"
+            android:hint="Số Điện Thoại"
+            android:textColor="@color/darkgray"
+            android:layout_marginLeft="10dp"
+            android:inputType="phone"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingLeft="20dp"
+        android:orientation="horizontal"
+        android:background="@drawable/back_shadow_item_profile">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/ic_jobs" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/jobs"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:background="@null"
+            android:hint="Công Việc"
+            android:textColor="@color/darkgray"
+            android:layout_marginLeft="10dp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingLeft="20dp"
+        android:orientation="horizontal"
+        android:background="@drawable/back_shadow_item_profile">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/ic_home" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/home"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:background="@null"
+            android:hint="Địa Chỉ"
+            android:textColor="@color/darkgray"
+            android:layout_marginLeft="10dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingBottom="16dp"
+        android:paddingTop="14dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingLeft="20dp"
+        android:paddingEnd="15dp"
+        android:orientation="horizontal"
+        android:background="@drawable/back_shadow_item_profile">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:background="@null"
+            android:text="Sở Thích:"
+            android:textColor="@color/darkgray"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/hobby"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@null"
+            android:hint="Thêm sở thích"
+            android:textColor="@color/darkgray"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginBottom="15dp"
+        android:gravity="center|bottom"
+        android:orientation="vertical" >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đăng Xuất"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:background="@drawable/back_pink_shadow_button"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:onClick="logOut"/>
+    </LinearLayout>
+</LinearLayout>

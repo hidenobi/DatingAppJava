@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Matches.MatchesActivity"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/toolbar"
+        android:paddingLeft="10dp"
+        android:orientation="horizontal">
+        <androidx.cardview.widget.CardView
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:background="@android:color/transparent"
+            android:elevation="2dp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="180dp">
+
+            <ImageView
+                android:id="@+id/currentUserImage"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:scaleType="centerCrop"
+                android:onClick="goToSettings"
+                android:src="@mipmap/ic_launcher" />
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="Đoạn chat"
+            android:textColor="@color/darkgray"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

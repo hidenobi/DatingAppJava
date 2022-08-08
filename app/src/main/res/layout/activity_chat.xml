@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Chat.ChatActivity">
+    <LinearLayout
+        android:id="@+id/currentMatches"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/toolbar"
+        android:paddingLeft="10dp"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+        <androidx.cardview.widget.CardView
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:background="@android:color/transparent"
+            android:elevation="2dp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="180dp">
+
+            <ImageView
+                android:id="@+id/currentMatchesImage"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher" />
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/currentMatchesName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="Đoạn chat"
+            android:textColor="@color/darkgray"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/currentMatches"
+        android:layout_above="@+id/sendLayout">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.core.widget.NestedScrollView>
+    <LinearLayout
+        android:id="@+id/sendLayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="5dp"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="5dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/message"
+            android:layout_weight="0.9"
+            android:layout_width="0dp"
+            android:paddingLeft="5dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/backedittext"
+            android:textSize="18dp"
+            android:hint="Nhập tin nhắn" />
+        <androidx.cardview.widget.CardView
+            android:layout_marginLeft="5dp"
+            android:layout_weight="0.1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:elevation="2dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_send"
+                android:text="Send"
+                android:id="@+id/send"/>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+</RelativeLayout>
